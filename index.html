@@ -167,5 +167,13 @@
     }
   </script>
   <h4 id="fin"><a href="./index2.html">Souhaiter vous consulter un jour particulier ?</a></h4>
+  <script>
+    // Enregistrement du service worker (obligatoire pour PWA)
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker enregistré"))
+        .catch(err => console.error("❌ SW échec", err));
+    }
+  </script>
 </body>
 </html>
