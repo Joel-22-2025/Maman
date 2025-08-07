@@ -135,5 +135,13 @@
       resultat.innerHTML = `📅 <strong>${jourNom} ${jourStr}</strong> : Le médecin est en <span class="${etat}">${etat}</span>.`;
     }
   </script>
+  <script>
+    // Enregistrement du service worker (obligatoire pour PWA)
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker enregistré"))
+        .catch(err => console.error("❌ SW échec", err));
+    }
+  </script>
 </body>
 </html>
