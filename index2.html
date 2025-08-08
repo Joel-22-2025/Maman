@@ -3,83 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style2.css">
   <meta name="theme-color" content="#2c3e50" />
   <link rel="manifest" href="manifest.json" />
-  <title>Planning Médecin</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #d0e7ff;
-      margin: 0;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    h1 {
-      color: #2c3e50;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-    }
-    .search-box {
-      width: 100%;
-      max-width: 400px;
-      background: white;
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      box-sizing: border-box;
-    }
-    label {
-      font-size: 1.1rem;
-      color: #34495e;
-      display: block;
-      margin-bottom: 0.5rem;
-      user-select: none;
-    }
-    input[type="date"] {
-      width: 100%;
-      padding: 0.6rem 0.8rem;
-      font-size: 1.1rem;
-      border: 2px solid #ccc;
-      border-radius: 6px;
-      transition: border-color 0.3s ease;
-      box-sizing: border-box;
-    }
-    input[type="date"]:focus {
-      outline: none;
-      border-color: #f39c12;
-      box-shadow: 0 0 5px #2c3e50;
-    }
-    button {
-      margin-top: 1rem;
-      width: 100%;
-      padding: 0.7rem;
-      font-size: 1.2rem;
-      background-color: #2c3e50;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #d67d0a;
-    }
-    .result {
-      margin-top: 1.5rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #2c3e50;
-      text-align: center;
-      min-height: 2.5rem;
-      user-select: none;
-      word-wrap: break-word;
-    }
-  </style>
+  <title>Planning Médecin 2</title>
 </head>
 <body>
   <h1>Agenda de Maman</h1>
@@ -91,52 +18,8 @@
     <div class="result" id="resultat"></div>
   </div>
 
-  <script>
-    const resultat = document.getElementById('resultat');
-
-    // Point de départ du cycle
-    const startDate = new Date("2025-06-05T00:00:00");
-    const startIndex = 2; // jour 3 du cycle
-
-    const cycle = [
-      "Permanence",       // Jour 1
-      "Garde",            // Jour 2
-      "Retour de garde",  // Jour 3
-      "Repos"             // Jour 4
-    ];
-
-    const jours = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
-
-    function modulo(n, m) {
-      return ((n % m) + m) % m;
-    }
-
-    function rechercher() {
-      const inputDate = document.getElementById('dateInput').value;
-      if (!inputDate) {
-        resultat.textContent = "Veuillez choisir une date.";
-        return;
-      }
-
-      const selectedDate = new Date(inputDate + "T00:00:00");
-      selectedDate.setHours(0, 0, 0, 0);
-
-      const diffTime = selectedDate - startDate;
-      if (diffTime < 0) {
-        resultat.textContent = "Date antérieure au début du planning.";
-        return;
-      }
-
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      const cycleIndex = modulo(startIndex + diffDays, cycle.length);
-      const etat = cycle[cycleIndex];
-
-      const jourNom = jours[selectedDate.getDay()];
-      const jourStr = selectedDate.toLocaleDateString("fr-FR");
-
-      resultat.innerHTML = `📅 <strong>${jourNom} ${jourStr}</strong> : Le médecin est en <span class="${etat}">${etat}</span>.`;
-    }
-  </script>
+  <script src="./js2.js"></script>
+  
   <script>
     // Enregistrement du service worker (obligatoire pour PWA)
     if ("serviceWorker" in navigator) {
