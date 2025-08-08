@@ -8,7 +8,7 @@ const filesToCache = [
   './js1.js',
   './js2.js',
   './manifest.json',
-  './icons/icon.png',
+  './icons/icon-512png',
   './icons/icon-192.png',
 ];
 
